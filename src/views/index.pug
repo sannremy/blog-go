@@ -4,42 +4,10 @@ head
   link(rel='stylesheet', href='/main.css')
 body.opacity-0
   .center(style='height: 100%; padding: 3em;')
-    div#hello(style='font-weight: 400; font-size: 2em; width: 100%; line-height: 1.3;')
-    #see-story.opacity-0(style='display: flex; flex-direction: row; justify-content: flex-start; padding-top: 3em;')
-      a(id='story-button', href='/#', class='Button Button--primary') My Story
+    div#hello.Hello
+    #see-story.Actions.hide
+      a(id='story-button', href='/story', class='Button Button--primary') My Story
       div(style='width: 30px;')
       a(href='/cancel', class='Button Button--secondary') Cancel
-
   #expandable
-
-
-  //- .center
-  //-   div(style='font-weight: 400; font-size: 2em; text-transform: uppercase;') Sann-Remy Chea
-  //-   div(style='font-weight: 700; font-size: 3em;') Software Engineer
-
-  //- .center
-  //-   div(style='font-weight: 700; font-size: 3em;') Experiences
-
-  //- .center
-  //-   div(style='font-weight: 400; font-size: 2em; text-transform: uppercase;') Software Engineer
-  //-   div(style='font-weight: 700; font-size: 3em;') Blizzard Entertainment
-
-  //- .center
-  //-   div(style='font-weight: 400; font-size: 2em; text-transform: uppercase;') Front-end Engineer
-  //-   div(style='font-weight: 700; font-size: 3em;') Rakuten
-
-  //- .center
-  //-   div(style='font-weight: 400; font-size: 2em; text-transform: uppercase;') Software Engineer
-  //-   div(style='font-weight: 700; font-size: 3em;') Ubisoft
-
-  //- .center
-  //-   div(style='font-weight: 700; font-size: 3em;') Education
-
-  //- .center
-  //-   div(style='font-weight: 400; font-size: 2em; text-transform: uppercase;') French Engineering diploma
-  //-   div(style='font-weight: 700; font-size: 3em;') EISTI
-
-  //- .center
-  //-   div(style='font-weight: 400; font-size: 2em; text-transform: uppercase;') 3-year diploma
-  //-   div(style='font-weight: 700; font-size: 3em;') University of Cergy-Pontoise
   script(src='/main.js')

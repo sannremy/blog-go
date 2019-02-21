@@ -1,4 +1,6 @@
 const express = require('express');
+const fallback = require('express-history-api-fallback');
+
 const app = express();
 const port = process.env.PORT || '8080';
 
@@ -8,6 +10,7 @@ app.set('view engine', 'pug');
 
 // Serve static
 app.use(express.static('dist'));
+app.use(fallback('index.html', { root: 'dist' }));
 
 // i18n
 const languagesAvailable = ['en', 'fr'];
@@ -21,7 +24,7 @@ for (let i = 0; i < languagesAvailable.length; i++) {
 }
 
 // Index route
-app.get(`/:language(${languagesAvailable.join('|')})?`, (req, res) => {
+app.get(`/:language(${languagesAvailable.join('|')})?/:page(story)?`, (req, res) => {
   // Get client language
   let clientLanguage = req.headers['accept-language'] || 'en';
 
