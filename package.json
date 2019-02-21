@@ -1,0 +1,32 @@
+{
+  "name": "srchea-com",
+  "private": true,
+  "description": "srchea.com website",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./src/app.js",
+    "build": "webpack --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sann-Remy Chea <src@srchea.com> (http://srchea.com)",
+  "license": "MIT",
+  "dependencies": {
+    "accept-language": "^3.0.18",
+    "express": "^4.16.4",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {
+    "animate.css": "^3.7.0",
+    "css-loader": "^2.1.0",
+    "file-loader": "^3.0.1",
+    "fontfaceobserver": "^2.1.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
+    "reset-css": "^4.0.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "typeit": "^6.0.2",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3"
+  }
+}
