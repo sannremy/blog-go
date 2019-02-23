@@ -1,5 +1,10 @@
 import TypeIt from 'typeit';
 
+const hello = document.querySelector('#hello');
+const storyExpandable = document.querySelector('#story-expendable');
+const storyButtons = document.querySelector('#see-story');
+const storyButton = document.querySelector('#story-button');
+
 export default class Routes {
   /**
    * Index handler
@@ -9,17 +14,11 @@ export default class Routes {
     // Show page
     document.body.classList.remove('opacity-0');
 
-    const hello = document.querySelector('#hello');
-    const expandable = document.querySelector('#expandable');
-    const storyButtons = document.querySelector('#see-story');
-    const storyButton = document.querySelector('#story-button');
-
     const storyButtonRect = storyButton.getBoundingClientRect();
-    expandable.style.top = storyButtonRect.top + 'px';
-    expandable.style.left = storyButtonRect.left + 'px';
-    expandable.style.width = storyButtonRect.width + 'px';
-    expandable.style.height = storyButtonRect.height + 'px';
-    expandable.innerText = storyButton.textContent;
+    storyExpandable.style.top = storyButtonRect.top + 'px';
+    storyExpandable.style.left = storyButtonRect.left + 'px';
+    storyExpandable.style.width = storyButtonRect.width + 'px';
+    storyExpandable.style.height = storyButtonRect.height + 'px';
 
     new TypeIt('#hello', {
       speed: 50,
@@ -48,10 +47,10 @@ export default class Routes {
       hello.classList.add('animated', 'faster', 'fadeOut');
 
       setTimeout(() => {
-        expandable.classList.add('big-h');
+        storyExpandable.classList.add('big-h');
 
         setTimeout(() => {
-          expandable.classList.add('big-v');
+          storyExpandable.classList.add('big-v');
         }, 500);
       }, 500);
     });
@@ -62,6 +61,5 @@ export default class Routes {
    * @return {void}
    */
   storyHandler () {
-    console.log('yes');
   }
 }

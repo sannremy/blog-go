@@ -1,6 +1,8 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+// icon svg from https://www.flaticon.com/authors/pixel-perfect
+
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
   entry: './src/static/scripts/main.js',
@@ -30,6 +32,10 @@ module.exports = {
           'css-loader',
           'sass-loader',
         ],
+      },
+      {
+          test: /\.svg$/,
+          loader: 'svg-inline-loader'
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
