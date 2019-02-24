@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node ./src/app.js",
-    "build": "webpack --watch",
+    "dev": "webpack --watch --config ./webpack.dev.js",
+    "build": "webpack --config ./webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sann-Remy Chea <src@srchea.com> (http://srchea.com)",
@@ -26,12 +27,14 @@
     "fontfaceobserver": "^2.1.0",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.11.0",
+    "nodemon-webpack-plugin": "^4.0.7",
     "page": "^1.11.4",
     "reset-css": "^4.0.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "typeit": "^6.0.2",
     "webpack": "^4.29.5",
-    "webpack-cli": "^3.2.3"
+    "webpack-cli": "^3.2.3",
+    "webpack-merge": "^4.2.1"
   }
 }

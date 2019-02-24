@@ -1,17 +1,23 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const NodemonPlugin = require('nodemon-webpack-plugin');
 
 // icon svg from https://www.flaticon.com/authors/pixel-perfect
 
 module.exports = {
-  mode: process.env.NODE_ENV || 'development',
   entry: './src/static/scripts/main.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist')
   },
   plugins: [
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin(),
+    new NodemonPlugin({
+      watch: path.resolve('./src'),
+      ignore: ['./src/static', './src/views'],
+      verbose: true,
+      script: './src/app.js'
+    })
   ],
   module: {
     rules: [
