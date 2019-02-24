@@ -6,6 +6,15 @@ html(lang=language)
   body(class='Landing Landing--' + page)
     include ./utils/svg-icons
 
+    #menu.Menu
+      ul.Menu__List
+        li.Menu__Item
+          a.Menu__Link About
+        li.Menu__Item
+          a.Menu__Link Story
+        li.Menu__Item
+          a.Menu__Link Portfolio
+
     #main-page.Page.Page--main
       include ./pages/main
 
