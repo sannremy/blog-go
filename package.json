@@ -2,7 +2,7 @@
   "name": "srchea-com",
   "private": true,
   "description": "srchea.com website",
-  "main": "app.js",
+  "main": "./src/app.js",
   "scripts": {
     "start": "node ./src/app.js",
     "dev": "webpack --watch --config ./webpack.dev.js",

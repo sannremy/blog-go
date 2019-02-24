@@ -1,27 +1,18 @@
 doctype html
-head
-  meta(charset='utf-8')
-  link(rel='stylesheet', href='/main.css')
-body.opacity-0
-  include ./svg-icons
+html(lang=language)
+  head
+    meta(charset='utf-8')
+    link(rel='stylesheet', href='/main.css')
+  body(class='Landing Landing--' + page)
+    include ./utils/svg-icons
 
-  .center(style='height: 100%; padding: 3em;')
-    div#hello.Hello
-    #see-story.Actions.hide
-      a(id='story-button', href='/story', class='Button Button--primary') My Story
-      a(href='https://www.linkedin.com/in/srchea/')
-        svg(viewBox='0 0 512 512' width="32"  height="32")
-          use(xlink:href='#linkedin')
-      a(href='https://github.com/srchea')
-        svg(viewBox='0 0 512 512' width="32"  height="32")
-          use(xlink:href='#github')
-      a(href='https://www.instagram.com/srchea/')
-        svg(viewBox='0 0 512 512' width="32"  height="32")
-          use(xlink:href='#instagram')
-      a(href='https://twitter.com/srchea')
-        svg(viewBox='0 0 512 512' width="32"  height="32")
-          use(xlink:href='#twitter')
+    #main-page.Page.Page--main
+      include ./pages/main
 
+    #story-page.Page.Page--story
+      include ./pages/story
 
-  #story-expendable My Story
-  script(src='/main.js')
+    #portfolio-page.Page.Page--portfolio
+      include ./pages/portfolio
+
+    script(src='/main.js')

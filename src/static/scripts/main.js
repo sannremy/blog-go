@@ -1,4 +1,3 @@
-import animateCSS from 'animate.css';
 import '../styles/main.scss';
 
 import Routes from './routes';
@@ -13,5 +12,6 @@ fontA.load().then(() => {
   const regexLang = languages.join('|');
   page(`/:language(${regexLang})?`, routes.indexHandler);
   page(`/:language(${regexLang})?/story`, routes.storyHandler);
+  page(`/:language(${regexLang})?/portfolio`, routes.portfolioHandler);
   page();
 });

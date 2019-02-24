@@ -1,0 +1,22 @@
+.Landing {
+  &--main {
+    .Page--story,
+    .Page--portfolio {
+      display: none;
+    }
+  }
+
+  &--story {
+    .Page--main,
+    .Page--portfolio {
+      display: none;
+    }
+  }
+
+  &--portfolio {
+    .Page--main,
+    .Page--story {
+      display: none;
+    }
+  }
+}

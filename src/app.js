@@ -24,7 +24,7 @@ for (let i = 0; i < languagesAvailable.length; i++) {
 }
 
 // Index route
-app.get(`/:language(${languagesAvailable.join('|')})?/:page(story)?`, (req, res) => {
+app.get(`/:language(${languagesAvailable.join('|')})?/:page(story|portfolio)?`, (req, res) => {
   // Get client language
   let clientLanguage = req.headers['accept-language'] || 'en';
 
@@ -36,8 +36,12 @@ app.get(`/:language(${languagesAvailable.join('|')})?/:page(story)?`, (req, res)
   // Get available language
   const language = acceptLanguage.get(clientLanguage);
 
+  // Get landing page
+  const page = req.params.page || 'main';
+
   res.render('index', {
     language: language,
+    page: page,
     __: (key) => {
       return languages[language][key] || key;
     }

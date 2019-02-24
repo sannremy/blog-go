@@ -1,14 +1,14 @@
 @import '~reset-css/sass/reset';
-@import 'fonts';
+@import '~animate.css/animate.css';
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: 'Work Sans', sans-serif;
-  background: #fff;
-  color: #000;
-}
+// Common configs
+@import 'fonts';
+@import 'site';
+
+// Components
+@import 'components/button';
+@import 'components/landing';
+@import 'components/page';
 
 .Hello {
   position: relative;
@@ -62,63 +62,4 @@ html, body {
   text-align: left;
 }
 
-#story-expendable {
-  width: 0;
-  height: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin-left: 0;
-  margin-top: 0;
-  transition: all 500ms;
-  z-index: -1;
-  box-sizing: border-box;
-  visibility: hidden;
 
-  padding: 1em 2em;
-  text-align: center;
-  background: #fff;
-  color: #000;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #000;
-
-  &.big-h {
-    z-index: auto;
-    visibility: visible;
-
-    width: 100% !important;
-    left: 0 !important;
-  }
-
-  &.big-v {
-    z-index: auto;
-    visibility: visible;
-    border-color: #fff;
-    font-size: 2em;
-
-    height: 100% !important;
-    top: 0 !important;
-  }
-}
-
-.Button {
-  padding: 1em 2em;
-  text-decoration: none;
-  background: inherit;
-  color: inherit;
-  border-width: 2px;
-  border-style: solid;
-  min-width: 70px;
-  text-align: center;
-
-  &.Button--primary {
-    border-color: #000;
-    background: #fff;
-    color: #000;
-  }
-
-  &:hover {
-    opacity: 0.7;
-  }
-}
