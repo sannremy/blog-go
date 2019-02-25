@@ -4,29 +4,37 @@ import PortfolioPage from './pages/portfolio';
 
 export default class Routes {
   /**
+   * Routes contructor
+   */
+  constructor() {
+    this.pages = {
+      main: new MainPage(),
+      story: new StoryPage(),
+      portfolio: new PortfolioPage()
+    };
+  }
+
+  /**
    * Index handler
    * @return {void}
    */
-  indexHandler () {
-    const mainPage = new MainPage();
-    mainPage.load();
+  indexHandler = () => {
+    this.pages.main.load();
   }
 
   /**
    * Story handler
    * @return {void}
    */
-  storyHandler () {
-    const storyPage = new StoryPage();
-    storyPage.load();
+  storyHandler = () => {
+    this.pages.story.load();
   }
 
   /**
    * Portfolio handler
    * @return {void}
    */
-  portfolioHandler () {
-    const portfolioPage = new PortfolioPage();
-    portfolioPage.load();
+  portfolioHandler = () => {
+    this.pages.portfolio.load();
   }
 }

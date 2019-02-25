@@ -1,0 +1,37 @@
+.Menu {
+  position: fixed;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1em 3em;
+  box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.16);
+  z-index: 10;
+  background: #fff;
+
+  // Menu list
+  &__List {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  // Menu item
+  &__Item {
+    margin-right: 1em;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  // Menu link
+  &__Link {
+    padding: 1em;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      background: #ccc;
+    }
+  }
+}

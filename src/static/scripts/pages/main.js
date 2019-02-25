@@ -3,6 +3,7 @@ import TypeIt from 'typeit';
 
 const hello = document.querySelector('#hello');
 const storyButtons = document.querySelector('#see-story');
+const menu = document.querySelector('#menu');
 
 export default class MainPage extends Page {
   /**
@@ -15,11 +16,15 @@ export default class MainPage extends Page {
 
     new TypeIt('#hello', {
       speed: 50,
+      nextStringDelay: 100,
       cursorChar: '<span class="cursor">|</span>',
       waitUntilVisible: true,
       afterComplete: (instance) => {
         storyButtons.classList.remove('hide');
         storyButtons.classList.add('animated', 'faster', 'fadeInUp');
+
+        menu.classList.remove('hide');
+        menu.classList.add('animated', 'faster', 'slideInDown');
       },
       strings: [
         `Hello!`,
@@ -27,13 +32,13 @@ export default class MainPage extends Page {
         `I'm a <span class="bold">Software Engineer</span>. :)`
       ]
     })
-    .pause(1000)
+    .pause(500)
+    .delete(1)
+    .pause(100)
     .delete(1)
     .pause(250)
-    .delete(1)
-    .pause(500)
     .type('\ud83d\ude0a')
-    .pause(500)
+    .pause(100)
     .go();
   }
 
