@@ -1,11 +1,20 @@
 import Page from './_page';
 
 export default class PortfolioPage extends Page {
+  container = document.querySelector('#portfolio-page');
+
+  /**
+   * Constructor
+   */
+  constructor () {
+    super();
+  }
+
   /**
    * Load a page
    * @return {void}
    */
-  load () {
+  load = () => {
     console.log('/portfolio');
   }
 
@@ -13,7 +22,7 @@ export default class PortfolioPage extends Page {
    * Unload a page
    * @return {void}
    */
-  unload () {
-
+  unload = () => {
+    this.container.classList.add('opacity-0');
   }
 }

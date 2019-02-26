@@ -6,12 +6,15 @@ export default class Routes {
   /**
    * Routes contructor
    */
-  constructor() {
+  constructor () {
     this.pages = {
       main: new MainPage(),
       story: new StoryPage(),
       portfolio: new PortfolioPage()
     };
+
+    this.activePageKey = null;
+    this.activePage = null;
   }
 
   /**
@@ -19,7 +22,16 @@ export default class Routes {
    * @return {void}
    */
   indexHandler = () => {
-    this.pages.main.load();
+    if (this.activePageKey !== 'main') {
+      if (this.activePage) {
+        this.activePage.unload();
+      }
+
+      this.pages.main.load();
+
+      this.activePageKey = 'main';
+      this.activePage = this.pages[this.activePageKey];
+    }
   }
 
   /**
@@ -27,7 +39,16 @@ export default class Routes {
    * @return {void}
    */
   storyHandler = () => {
-    this.pages.story.load();
+    if (this.activePageKey !== 'story') {
+      if (this.activePage) {
+        this.activePage.unload();
+      }
+
+      this.pages.story.load();
+
+      this.activePageKey = 'story';
+      this.activePage = this.pages[this.activePageKey];
+    }
   }
 
   /**
@@ -35,6 +56,15 @@ export default class Routes {
    * @return {void}
    */
   portfolioHandler = () => {
-    this.pages.portfolio.load();
+    if (this.activePageKey !== 'portfolio') {
+      if (this.activePage) {
+        this.activePage.unload();
+      }
+
+      this.pages.portfolio.load();
+
+      this.activePageKey = 'portfolio';
+      this.activePage = this.pages[this.activePageKey];
+    }
   }
 }

@@ -1,11 +1,20 @@
 import Page from './_page';
 
 export default class StoryPage extends Page {
+  container = document.querySelector('#story-page');
+
+  /**
+   * Constructor
+   */
+  constructor () {
+    super();
+  }
+
   /**
    * Load a page
    * @return {void}
    */
-  load () {
+  load = () => {
     console.log('/story');
   }
 
@@ -13,7 +22,7 @@ export default class StoryPage extends Page {
    * Unload a page
    * @return {void}
    */
-  unload () {
-
+  unload = () => {
+    this.container.classList.add('opacity-0');
   }
 }

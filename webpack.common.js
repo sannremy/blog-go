@@ -14,6 +14,7 @@ module.exports = {
   ],
   module: {
     rules: [
+      // Use of ES6 class 'this'
       {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
@@ -29,6 +30,7 @@ module.exports = {
           }
         }
       },
+      // SCSS transpiler
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
@@ -37,10 +39,7 @@ module.exports = {
           'sass-loader',
         ],
       },
-      {
-          test: /\.svg$/,
-          loader: 'svg-inline-loader'
-      },
+      // Copy images
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
@@ -52,6 +51,7 @@ module.exports = {
           }
         ]
       },
+      // Copy fonts
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [
@@ -62,6 +62,11 @@ module.exports = {
             }
           }
         ]
+      },
+      // Pace defined in AMD, not correct
+      {
+        test: require.resolve('pace-progress'),
+        loader: 'imports-loader?define=>false'
       }
     ]
   }

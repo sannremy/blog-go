@@ -6,11 +6,20 @@ const storyButtons = document.querySelector('#see-story');
 const menu = document.querySelector('#menu');
 
 export default class MainPage extends Page {
+  container = document.querySelector('#main-page');
+
+  /**
+   * Constructor
+   */
+  constructor () {
+    super();
+  }
+
   /**
    * Load a page
    * @return {void}
    */
-  load () {
+  load = () => {
     // Show page
     document.body.classList.remove('opacity-0');
 
@@ -46,7 +55,7 @@ export default class MainPage extends Page {
    * Unload a page
    * @return {void}
    */
-  unload () {
-
+  unload = () => {
+    this.container.classList.add('opacity-0');
   }
 }

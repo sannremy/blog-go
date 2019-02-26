@@ -3,7 +3,7 @@ export default class Page {
    * Load a page
    * @return {void}
    */
-  load () {
+  load = () => {
     throw new Error('Page.load has to be override');
   }
 
@@ -11,7 +11,7 @@ export default class Page {
    * Unload a page
    * @return {void}
    */
-  unload () {
+  unload = () => {
     throw new Error('Page.unload has to be override');
   }
 }
