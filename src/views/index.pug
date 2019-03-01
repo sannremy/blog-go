@@ -9,7 +9,7 @@ html(lang=language)
     #menu.Menu.hide
       ul.Menu__List
         li.Menu__Item
-          a.Menu__Link(href='/') About
+          a.Menu__Link(href='/') /
         li.Menu__Item
           a.Menu__Link(href='/story') Story
         li.Menu__Item
@@ -24,4 +24,14 @@ html(lang=language)
     #portfolio-page.Page.Page--portfolio
       include ./pages/portfolio
 
+    script.
+      window.paceOptions = {
+        ajax: false,
+        document: false,
+        eventLag: false,
+        target: '#menu',
+        elements: {
+          selectors: ['.Page']
+        }
+      };
     script(src='/main.js')
