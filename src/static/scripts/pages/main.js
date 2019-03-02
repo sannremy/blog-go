@@ -6,6 +6,7 @@ const storyButtons = document.querySelector('#see-story');
 const menu = document.querySelector('#menu');
 
 export default class MainPage extends Page {
+  isDisplayedOnce = false;
   container = document.querySelector('#main-page');
 
   /**
@@ -20,35 +21,43 @@ export default class MainPage extends Page {
    * @return {void}
    */
   load = () => {
-    // Show page
-    document.body.classList.remove('opacity-0');
+    if (this.isDisplayedOnce) {
+      this.container.classList.remove('hide');
+    } else {
+      this.isDisplayedOnce = true;
 
-    new TypeIt('#hello', {
-      speed: 50,
-      nextStringDelay: 100,
-      cursorChar: '<span class="cursor">|</span>',
-      waitUntilVisible: true,
-      afterComplete: (instance) => {
-        storyButtons.classList.remove('hide');
-        storyButtons.classList.add('animated', 'faster', 'fadeInUp');
+      new TypeIt('#hello', {
+        speed: 50,
+        nextStringDelay: 100,
+        cursorChar: '<span class="cursor">|</span>',
+        waitUntilVisible: true,
+        afterComplete: (instance) => {
+          // Hide blinking cursor
+          document.querySelector('.ti-cursor').classList.add('hide');
 
-        menu.classList.remove('hide');
-        menu.classList.add('animated', 'faster', 'slideInDown');
-      },
-      strings: [
-        `Hello!`,
-        `My name is <span class="bold">Sann-Remy</span>.`,
-        `I'm a <span class="bold">Software Engineer</span>. :)`
-      ]
-    })
-    .pause(500)
-    .delete(1)
-    .pause(100)
-    .delete(1)
-    .pause(250)
-    .type('\ud83d\ude0a')
-    .pause(100)
-    .go();
+          // Show buttons
+          storyButtons.classList.remove('hide');
+          storyButtons.classList.add('animated', 'faster', 'fadeInUp');
+
+          // Show menu
+          menu.classList.remove('hide');
+          menu.classList.add('animated', 'faster', 'slideInDown');
+        },
+        strings: [
+          `Hello!`,
+          `My name is <span class="bold">Sann-Remy</span>.`,
+          `I'm a <span class="bold">Software Engineer</span>. :)`
+        ]
+      })
+      .pause(500)
+      .delete(1)
+      .pause(100)
+      .delete(1)
+      .pause(250)
+      .type('\ud83d\ude0a')
+      .pause(100)
+      .go();
+    }
   }
 
   /**
@@ -56,6 +65,6 @@ export default class MainPage extends Page {
    * @return {void}
    */
   unload = () => {
-    this.container.classList.add('opacity-0');
+    this.container.classList.add('hide');
   }
 }

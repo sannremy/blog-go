@@ -16,6 +16,7 @@ export default class PortfolioPage extends Page {
    */
   load = () => {
     console.log('/portfolio');
+    this.container.classList.remove('hide');
   }
 
   /**
@@ -23,6 +24,6 @@ export default class PortfolioPage extends Page {
    * @return {void}
    */
   unload = () => {
-    this.container.classList.add('opacity-0');
+    this.container.classList.add('hide');
   }
 }

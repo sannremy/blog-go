@@ -2,7 +2,6 @@ import '../styles/main.scss';
 
 import Routes from './routes';
 import page from 'page';
-import 'pace-progress';
 import FontFaceObserver from 'fontfaceobserver';
 
 const fontA = new FontFaceObserver('Work Sans');

@@ -62,11 +62,6 @@ module.exports = {
             }
           }
         ]
-      },
-      // Pace defined in AMD, not correct
-      {
-        test: require.resolve('pace-progress'),
-        loader: 'imports-loader?define=>false'
       }
     ]
   }
