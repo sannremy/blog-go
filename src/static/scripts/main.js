@@ -11,7 +11,5 @@ const routes = new Routes();
 fontA.load().then(() => {
   const regexLang = languages.join('|');
   page(`/:language(${regexLang})?`, routes.indexHandler);
-  page(`/:language(${regexLang})?/story`, routes.storyHandler);
-  page(`/:language(${regexLang})?/portfolio`, routes.portfolioHandler);
   page();
 });

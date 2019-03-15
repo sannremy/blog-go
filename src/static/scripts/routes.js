@@ -1,20 +1,12 @@
-import MainPage from './pages/main';
-import StoryPage from './pages/story';
-import PortfolioPage from './pages/portfolio';
+import TypeIt from 'typeit';
 
 export default class Routes {
+  container = document.querySelector('#main-page');
+
   /**
    * Routes contructor
    */
   constructor () {
-    this.pages = {
-      main: new MainPage(),
-      story: new StoryPage(),
-      portfolio: new PortfolioPage()
-    };
-
-    this.activePageKey = null;
-    this.activePage = null;
   }
 
   /**
@@ -22,49 +14,35 @@ export default class Routes {
    * @return {void}
    */
   indexHandler = () => {
-    if (this.activePageKey !== 'main') {
-      if (this.activePage) {
-        this.activePage.unload();
-      }
+    new TypeIt('#about-intro', {
+      speed: 50,
+      nextStringDelay: 100,
+      cursorChar: '<span class="cursor">|</span>',
+      waitUntilVisible: true,
+      afterComplete: (instance) => {
+        // Hide blinking cursor
+        document.querySelector('.ti-cursor').classList.add('hide');
 
-      this.pages.main.load();
-
-      this.activePageKey = 'main';
-      this.activePage = this.pages[this.activePageKey];
-    }
-  }
-
-  /**
-   * Story handler
-   * @return {void}
-   */
-  storyHandler = () => {
-    if (this.activePageKey !== 'story') {
-      if (this.activePage) {
-        this.activePage.unload();
-      }
-
-      this.pages.story.load();
-
-      this.activePageKey = 'story';
-      this.activePage = this.pages[this.activePageKey];
-    }
-  }
-
-  /**
-   * Portfolio handler
-   * @return {void}
-   */
-  portfolioHandler = () => {
-    if (this.activePageKey !== 'portfolio') {
-      if (this.activePage) {
-        this.activePage.unload();
-      }
-
-      this.pages.portfolio.load();
-
-      this.activePageKey = 'portfolio';
-      this.activePage = this.pages[this.activePageKey];
-    }
+        // Show buttons
+        document.querySelector('#about-button').classList.remove('hide');
+        document.querySelector('#about-button').classList.add(
+          'animated',
+          'fadeInUp'
+        );
+      },
+      strings: [
+        `Hello!`,
+        `My name is <span class="upper-bold">Sann-Remy</span>.`,
+        `I'm a <span class="upper-bold">Software Engineer</span>. :)`
+      ]
+    })
+    .pause(500)
+    .delete(1)
+    .pause(100)
+    .delete(1)
+    .pause(250)
+    .type('\ud83d\ude0a')
+    .pause(100)
+    .go();
   }
 }

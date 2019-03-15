@@ -2,26 +2,27 @@ doctype html
 html(lang=language)
   head
     meta(charset='utf-8')
+    meta(name='viewport', content='initial-scale=1.0, user-scalable=yes')
     link(rel='stylesheet', href='/main.css')
-  body(class='Landing Landing--' + page)
+  body
     include ./utils/svg-icons
 
-    #menu.Menu.hide
-      ul.Menu__List
-        li.Menu__Item
-          a.Menu__Link(href='/') /
-        li.Menu__Item
-          a.Menu__Link(href='/story') Story
-        li.Menu__Item
-          a.Menu__Link(href='/portfolio') Portfolio
+    .About
+      #about-intro.About__Intro
+      #about-button.About__Button.hide
+        a(href='https://www.linkedin.com/in/srchea/')
+          svg(viewBox='0 0 512 512', class='About__Button__Icon')
+            use(xlink:href='#linkedin')
+        a(href='https://github.com/srchea')
+          svg(viewBox='0 0 512 512', class='About__Button__Icon')
+            use(xlink:href='#github')
+        a(href='https://www.instagram.com/srchea/')
+          svg(viewBox='0 0 512 512', class='About__Button__Icon')
+            use(xlink:href='#instagram')
+        a(href='https://twitter.com/srchea')
+          svg(viewBox='0 0 512 512', class='About__Button__Icon')
+            use(xlink:href='#twitter')
 
-    #main-page.Page.Page--main
-      include ./pages/main
-
-    #story-page.Page.Page--story
-      include ./pages/story
-
-    #portfolio-page.Page.Page--portfolio
-      include ./pages/portfolio
+    .BlueScreen 😵
 
     script(src='/main.js')

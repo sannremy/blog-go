@@ -4,63 +4,104 @@
 // Common configs
 @import 'fonts';
 @import 'site';
+@import 'breakpoints';
 
-// Components
-@import 'components/button';
-@import 'components/landing';
-@import 'components/menu';
-@import 'components/page';
-
-.Hello {
-  position: relative;
-  height: auto;
-  font-weight: 400;
-  font-size: 2em;
+.About {
+  background: #fff;
+  color: #000;
+  box-sizing: border-box;
   width: 100%;
-  line-height: 1.3;
-}
-
-.Actions {
+  height: inherit;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  padding-top: 3em;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 3em;
+  overflow: hidden;
 
-  a {
-    margin-right: 20px;
-    &:last-of-type {
-      margin-right: 0;
+  &__Intro {
+    position: relative;
+    height: auto;
+    font-weight: 400;
+    font-size: 1.6em;
+    width: auto;
+    line-height: 1.3;
+
+    @include bp($bp-xs) {
+      font-size: 1.7em;
     }
+
+    @include bp($bp-s) {
+      font-size: 1.8em;
+    }
+
+    @include bp($bp-m) {
+      font-size: 2em;
+    }
+  }
+
+  &__Button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+    max-width: 230px;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 2em;
+
+    @include bp($bp-xs) {
+      padding-top: 2.2em;
+    }
+
+    @include bp($bp-s) {
+      padding-top: 2.6em;
+    }
+
+    @include bp($bp-m) {
+      padding-top: 3em;
+    }
+
+    &.hide {
+      visibility: hidden;
+    }
+
+    &__Icon {
+      width: 22px;
+      height: 22px;
+
+      @include bp($bp-xs) {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+
+  .upper-bold {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .ti-cursor.hide {
+    visibility: hidden;
   }
 }
 
-.hide {
-  visibility: hidden;
-}
-
-.none {
-  display: none;
-}
-
-.cursor {
-  font-weight: normal;
-}
-
-.bold {
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.center {
-  box-sizing: border-box;
+.BlueScreen {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  background: #2569b0;
   display: flex;
-  // align-items: center;
-  justify-content: center;
   flex-direction: column;
-  text-align: left;
+  justify-content: center;
+  text-align: center;
+  font-size: 3em;
+
+
+  @include bp($bp-min) {
+    display: none;
+  }
 }
-
-
