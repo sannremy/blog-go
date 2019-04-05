@@ -17,6 +17,6 @@ action "GCP Authenticate" {
 action "GCP Deploy" {
   needs = ["GCP Authenticate"]
   uses = "actions/gcloud/cli@master"
-  args = "app deploy"
+  args = "app deploy --quiet"
   secrets = ["CLOUDSDK_CORE_PROJECT"]
 }
