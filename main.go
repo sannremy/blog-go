@@ -16,7 +16,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
     return
   }
 
-  fmt.Fprintln(w, "srchea-com")
+  fmt.Fprintln(w, "srchea-com 2")
 }
 
 func main() {
