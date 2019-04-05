@@ -1,8 +1,5 @@
-# Dependencies
-node_modules
-
-# Output
-dist
-
 # OS
 .DS_Store
+
+# Auto-generated
+/index.yaml
