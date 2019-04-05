@@ -8,7 +8,6 @@ action "Branch master" {
   args = "branch master"
 }
 
-
 action "GCP Authenticate" {
   needs = ["Branch master"]
   uses = "actions/gcloud/auth@master"
