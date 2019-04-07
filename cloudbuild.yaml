@@ -1,8 +1,8 @@
 steps:
 - name: golang
-  env: ['GOPATH=$PWD', 'GO111MODULE=on']
+  env: ['GOPATH=/workspace', 'GO111MODULE=on']
   args: ['go', 'build', './...']
 - name: 'gcr.io/cloud-builders/gcloud'
-  env: ['GOPATH=$PWD']
+  env: ['GOPATH=/workspace']
   args: ['app', 'deploy']
 timeout: '600s'
