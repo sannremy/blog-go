@@ -9,10 +9,8 @@ import (
   "google.golang.org/appengine" // Required external App Engine library
 )
 
-func indexHandler(w http.ResponseWriter, r *http.Request) {
+func IndexHandler(w http.ResponseWriter, r *http.Request) {
   // if statement redirects all invalid URLs to the root homepage.
-  // Ex: if URL is http://[YOUR_PROJECT_ID].appspot.com/FOO, it will be
-  // redirected to http://[YOUR_PROJECT_ID].appspot.com.
   if r.URL.Path != "/" {
     http.Redirect(w, r, "/", http.StatusFound)
     return
@@ -22,6 +20,6 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-  http.HandleFunc("/", indexHandler)
+  http.HandleFunc("/", IndexHandler)
   appengine.Main() // Starts the server to receive requests
 }

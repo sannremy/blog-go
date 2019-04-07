@@ -1,4 +1,5 @@
 runtime: go112
+# runtime: go111
 env: standard
 instance_class: F1
 automatic_scaling:
