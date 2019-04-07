@@ -1,7 +1,4 @@
 steps:
-- name: golang
-  env: ['GOPATH=/workspace', 'GO111MODULE=on']
-  args: ['go', 'build', './...']
 - name: 'gcr.io/cloud-builders/gcloud'
   env: ['GOPATH=/workspace']
   args: ['app', 'deploy']
