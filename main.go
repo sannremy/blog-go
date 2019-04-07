@@ -1,3 +1,5 @@
+// import "$PROJECT_ROOT"
+
 package main
 
 import (

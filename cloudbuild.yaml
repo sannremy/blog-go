@@ -1,6 +1,7 @@
 steps:
-- name: "gcr.io/cloud-builders/go"
-  args: ["get", "google.golang.org/appengine"]
-- name: "gcr.io/cloud-builders/gcloud"
-  args: ["app", "deploy"]
-timeout: "600s"
+- name: golang
+  env: ['GO111MODULE=on']
+  args: ['go', 'build', './...']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy']
+timeout: '600s'
