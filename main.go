@@ -16,7 +16,7 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
     return
   }
 
-  fmt.Fprintln(w, "srchea-com auto deployed!")
+  fmt.Fprintln(w, "src.onl auto deployed!")
 }
 
 func main() {
