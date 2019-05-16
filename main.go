@@ -1,7 +1,7 @@
 package main
 
 import (
-  "io"
+  "html/template"
   "net/http"
   "net/url"
   "strings"
@@ -9,9 +9,16 @@ import (
   "google.golang.org/appengine" // Required external App Engine library
 )
 
+type IndexPageData struct {
+	PageTitle string
+}
+
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
-  w.WriteHeader(http.StatusOK)
-  io.WriteString(w, "src.onl auto deployed!\n")
+  tmpl := template.Must(template.ParseFiles("web/templates/layout.html"))
+  data := IndexPageData{
+    PageTitle: "src.onl deployed!",
+  }
+  tmpl.Execute(w, data)
 }
 
 func RedirectWwwMiddleware(next http.Handler) http.Handler {
@@ -35,6 +42,10 @@ func RedirectWwwMiddleware(next http.Handler) http.Handler {
 
 func main() {
   r := mux.NewRouter()
+
+  // Serve assets
+  fs := http.FileServer(http.Dir("web/static/"))
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
   // Redirect if www
   r.Use(RedirectWwwMiddleware)
