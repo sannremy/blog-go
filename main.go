@@ -1,8 +1,7 @@
 package main
 
 import (
-  "fmt"
-  "strings"
+  "io"
   "net/http"
   "github.com/gorilla/mux"
   "google.golang.org/appengine" // Required external App Engine library
@@ -10,24 +9,15 @@ import (
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
   w.WriteHeader(http.StatusOK)
-  fmt.Fprintln(w, "src.onl auto deployed!")
+  io.WriteString(w, "src.onl auto deployed!\n")
 }
 
 func main() {
   r := mux.NewRouter()
+
+  // Index route
   r.HandleFunc("/", IndexHandler)
+
   http.Handle("/", r)
-
-  if appengine.IsAppEngine() {
-    go http.ListenAndServe(":80", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-      host := r.Host
-      if strings.Contains(host, "www.") {
-        host = strings.TrimPrefix(host, "www.")
-      }
-
-      http.Redirect(w, r, "https://" + host + r.URL.String(), http.StatusMovedPermanently)
-    }))
-  }
-
   appengine.Main() // Starts the server to receive requests
 }
