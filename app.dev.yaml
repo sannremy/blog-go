@@ -1,4 +1,4 @@
-runtime: go112
+runtime: go111
 env: standard
 instance_class: F1
 automatic_scaling:
@@ -8,3 +8,6 @@ handlers:
   secure: always
   redirect_http_response_code: 301
   script: auto
+skip_files:
+- .*node_modules
+- .*dist
