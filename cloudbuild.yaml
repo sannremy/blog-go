@@ -9,7 +9,7 @@ steps:
   id: '02-yarn-build'
   waitFor:
   - '01-yarn-install'
-- name: golang:1.12-alpine
+- name: golang:1.12
   env: ['GOPATH=/go']
   args: ['go', 'build']
   id: '03-go-build'
