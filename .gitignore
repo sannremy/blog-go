@@ -2,5 +2,7 @@
 .DS_Store
 
 # Auto-generated
-index.yaml
-homepage
+/index.yaml
+/homepage
+/node_modules
+/dist

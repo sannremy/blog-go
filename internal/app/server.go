@@ -12,7 +12,7 @@ func Start() {
 	r := mux.NewRouter()
 
 	// Serve assets
-	fs := http.FileServer(http.Dir("web/static/"))
+	fs := http.FileServer(http.Dir("dist/"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	// Redirect if www
