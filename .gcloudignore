@@ -1,6 +1,18 @@
 .gcloudignore
-node_modules
+node_modules/
+*~
+/scripts/
+/web/static/
+/.editorconfig
+/app.dev.yaml
+/app.yaml
+/cloudbuild.yaml
+/go.mod
+/go.sum
+/package.json
+/yarn.lock
+/README.md
 
 # Git
-.git
+.git/
 .gitignore
