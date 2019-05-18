@@ -1,4 +1,5 @@
 .gcloudignore
+node_modules
 
 # Git
 .git
