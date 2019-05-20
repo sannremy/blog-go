@@ -4,11 +4,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   entry: './web/static/scripts/main.js',
   output: {
-    filename: 'main.js',
+    filename: '[name]-[hash].js',
     path: path.resolve(__dirname, '..', 'dist')
   },
   plugins: [
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin({
+      filename: '[name]-[hash].css',
+    })
   ],
   module: {
     rules: [

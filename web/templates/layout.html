@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>{{.PageTitle}}</title>
-    <link rel="stylesheet" href="/static/main.css" type="text/css">
+    <link rel="stylesheet" href="/static/{{index .GlobalViewData.StaticFiles "CSS"}}" type="text/css">
   </head>
   <body>
     <h1>{{.PageTitle}}</h1>
-    <script src="/static/main.js"></script>
+    <script src="/static/{{index .GlobalViewData.StaticFiles "JS"}}"></script>
   </body>
 </html>

@@ -18,6 +18,9 @@ func Start() {
 	// Redirect if www
 	r.Use(middleware.RedirectWwwMiddleware)
 
+	// Get static js and css
+	r.Use(middleware.StaticFilesMiddleware)
+
 	// Index route
 	r.HandleFunc("/", controllers.IndexHandler)
 
