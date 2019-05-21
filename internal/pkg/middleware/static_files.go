@@ -20,10 +20,15 @@ var css = ""
 // StaticFilesMiddleware populate request context with main js and css file names
 func StaticFilesMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+
 		// Check if js and css files have been already fetched
 		if js == "" || css == "" {
 			distDir := "dist/"
 			filePrefix := distDir + "main-"
+
+			// if os.Getenv("ENVIRONMENT") == "development" {
+			// 	filePrefix += "dev"
+			// }
 
 			// Find main js and css files
 			err := filepath.Walk(distDir, func(path string, info os.FileInfo, err error) error {
