@@ -8,6 +8,7 @@ import (
 	"github.com/srchea/homepage/internal/pkg/middleware"
 )
 
+// Start starts a HTTP server
 func Start() {
 	r := mux.NewRouter()
 
@@ -24,5 +25,6 @@ func Start() {
 	// Index route
 	r.HandleFunc("/", controllers.IndexHandler)
 
+	// Serve
 	http.Handle("/", r)
 }
