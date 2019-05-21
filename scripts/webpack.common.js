@@ -1,6 +1,5 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './web/static/scripts/main.js',
@@ -8,12 +7,6 @@ module.exports = {
     filename: '[name]-[hash].js',
     path: path.resolve(__dirname, '..', 'dist')
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin({
-      filename: '[name]-[hash].css',
-    })
-  ],
   module: {
     rules: [
       // Use of ES6 class 'this'

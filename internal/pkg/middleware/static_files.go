@@ -26,9 +26,9 @@ func StaticFilesMiddleware(next http.Handler) http.Handler {
 			distDir := "dist/"
 			filePrefix := distDir + "main-"
 
-			// if os.Getenv("ENVIRONMENT") == "development" {
-			// 	filePrefix += "dev"
-			// }
+			if os.Getenv("ENVIRONMENT") == "development" {
+				filePrefix += "dev"
+			}
 
 			// Find main js and css files
 			err := filepath.Walk(distDir, func(path string, info os.FileInfo, err error) error {
