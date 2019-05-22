@@ -32,13 +32,38 @@ body {
     flex: 1;
     justify-content: space-between;
 
+    $icon: 32px;
+    $padding: 10px;
+
     li {
-      width: 32px;
+      width: $icon + $padding;
+    }
+
+    a {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100%;
+      box-sizing: border-box;
+      padding: $padding;
+      transition: all 200ms linear;
+
+      &:hover {
+        background: #ccc;
+      }
+
+      svg {
+        width: 100%;
+      }
     }
   }
 }
 
+$margin: 20px;
+
 .picture {
+  margin-bottom: $margin;
   img {
     border-radius: 100%;
     width: 50%;
@@ -51,9 +76,12 @@ body {
 }
 
 .role {
-  font-weight: 600;
+  // font-weight: 200;
 }
 
 .description {
-  color: #ccc;
+  margin-top: $margin;
+  margin-bottom: $margin;
+  color: #888;
+  line-height: 1.5;
 }
