@@ -7,8 +7,9 @@ body {
   margin: 0;
   padding: 0;
   font-size: 14px;
+  font-weight: 400;
   height: 100%;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .main {
@@ -41,6 +42,7 @@ body {
     }
 
     a {
+      position: relative;
       display: flex;
       flex: 1;
       align-items: center;
@@ -48,14 +50,33 @@ body {
       border-radius: 100%;
       box-sizing: border-box;
       padding: $padding;
-      transition: all 200ms linear;
 
       &:hover {
-        background: #ccc;
+        &::before {
+          opacity: 1;
+        }
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        background-color: #f1f2f6;
+        background-image: linear-gradient(315deg, #f1f2f6 0%, #c9c6c6 74%);
+        transition: all 200ms linear;
+        opacity: 0;
+        z-index: 0;
       }
 
       svg {
+        position: relative;
         width: 100%;
+        z-index: 1;
       }
     }
   }
@@ -76,12 +97,8 @@ $margin: 20px;
   font-weight: 200;
 }
 
-.role {
-  // font-weight: 200;
-}
-
 .description {
   margin-top: $margin;
   margin-bottom: $margin;
-  color: #888;
+  color: #797070;
 }
