@@ -89,10 +89,15 @@ body {
 $margin: 20px;
 
 .picture {
+  margin: 0 auto;
+  width: 128px;
+  height: 128px;
+  box-sizing: border-box;
   margin-bottom: $margin;
+
   img {
+    width: 100%;
     border-radius: 100%;
-    width: 128px;
   }
 }
 
