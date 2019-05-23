@@ -66,8 +66,8 @@ body {
         width: 100%;
         height: 100%;
         border-radius: 100%;
-        background-color: #f1f2f6;
-        background-image: linear-gradient(315deg, #f1f2f6 0%, #c9c6c6 74%);
+        background-color: #d9e4f5;
+        background-image: linear-gradient(315deg, #d9e4f5 0%, #f5e3e6 74%);
         transition: all 200ms linear;
         opacity: 0;
         z-index: 0;
@@ -100,5 +100,5 @@ $margin: 20px;
 .description {
   margin-top: $margin;
   margin-bottom: $margin;
-  color: #797070;
+  color: #888;
 }
