@@ -1,6 +1,7 @@
 package app
 
 import (
+	"io"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -24,6 +25,11 @@ func Start() {
 
 	// Index route
 	r.HandleFunc("/", controllers.IndexHandler)
+
+	// Robots.txt route
+	r.HandleFunc("/robots.txt", func(w http.ResponseWriter, r *http.Request) {
+		io.WriteString(w, "User-agent: *")
+	})
 
 	// Serve
 	http.Handle("/", r)
