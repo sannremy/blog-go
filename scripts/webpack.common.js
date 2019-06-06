@@ -11,7 +11,10 @@ module.exports = {
   },
   plugins: [
     new CopyPlugin([
-      { from: './web/static/assets', to: 'assets' },
+      {
+        from: './web/static/assets',
+        to: 'assets',
+      },
     ]),
   ],
   module: {
