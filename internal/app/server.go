@@ -26,6 +26,11 @@ func Start() {
 	// Index route
 	r.HandleFunc("/", controllers.IndexHandler)
 
+	// Favicon
+	r.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "web/static/assets/favicon.ico")
+	})
+
 	// Robots.txt route
 	r.HandleFunc("/robots.txt", func(w http.ResponseWriter, r *http.Request) {
 		io.WriteString(w, "User-agent: *")
