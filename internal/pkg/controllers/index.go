@@ -20,7 +20,11 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	staticFiles := r.Context().Value(contexts.StaticFilesKeyContextKey)
 
 	// Get template
-	tmpl := template.Must(template.ParseFiles("web/templates/layout.html"))
+	tmpl := template.Must(template.ParseFiles(
+		"web/templates/layout.html",
+		"web/templates/partials/icons.html",
+		"web/templates/partials/navbar.html",
+	))
 
 	// View data
 	data := &viewData{
