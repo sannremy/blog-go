@@ -8,55 +8,13 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
   </head>
   <body>
-    {{ template "icons" }}
-    {{ template "navbar" }}
-    <div class="main">
-      <section>
-        <div class="picture">
-          <img src="/static/assets/picture.jpg" />
-        </div>
-        <div class="name">Sann-Remy Chea</div>
-        <div class="role">Software Engineer</div>
-        <p class="description">Currently working for <a href="https://www.blizzard.com/">Blizzard&nbsp;Entertainment</a>. I mostly do full&nbsp;stack development: building UI, server code, infrastructure, database.<br />I speak English and French.</p>
-        <ul>
-          <li>
-            <a href="https://github.com/srchea">
-              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <use xlink:href="#github" x="0" y="0" />
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="https://codepen.io/srchea">
-              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <use xlink:href="#codepen" x="0" y="0" />
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="https://instagram.com/srchea">
-              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <use xlink:href="#instagram" x="0" y="0" />
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="https://twitter.com/srchea">
-              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <use xlink:href="#twitter" x="0" y="0" />
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/srchea">
-              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <use xlink:href="#linkedin" x="0" y="0" />
-              </svg>
-            </a>
-        </li>
-        </ul>
-      </section>
-    </div>
+    {{ template "partial-icons" }}
+    {{ template "partial-navbar" }}
+    {{if eq .PageView "about"}}
+      {{ template "page-about" }}
+    {{else if eq .PageView "posts"}}
+      {{ template "page-posts" }}
+    {{end}}
     <script src="/static/{{index .GlobalViewData.StaticFiles "JS"}}"></script>
   </body>
 </html>

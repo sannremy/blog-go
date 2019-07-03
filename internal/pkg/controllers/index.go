@@ -12,6 +12,7 @@ import (
 type viewData struct {
 	GlobalViewData *models.GlobalViewData
 	PageTitle      string
+	PageView       string
 }
 
 // IndexHandler handles the main page
@@ -22,13 +23,18 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	// Get template
 	tmpl := template.Must(template.ParseFiles(
 		"web/templates/layout.html",
+
 		"web/templates/partials/icons.html",
 		"web/templates/partials/navbar.html",
+
+		"web/templates/pages/posts.html",
+		"web/templates/pages/about.html",
 	))
 
 	// View data
 	data := &viewData{
 		PageTitle: "src.onl deployed!",
+		PageView:  "about",
 		GlobalViewData: &models.GlobalViewData{
 			StaticFiles: staticFiles,
 		},
