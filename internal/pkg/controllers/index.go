@@ -8,33 +8,48 @@ import (
 	"github.com/srchea/homepage/internal/pkg/models"
 )
 
-// Private view data for index
+// Get template
+var tmpl = template.Must(template.ParseFiles(
+	"web/templates/layout.html",
+
+	"web/templates/partials/icons.html",
+	"web/templates/partials/navbar.html",
+
+	"web/templates/pages/posts.html",
+	"web/templates/pages/about.html",
+))
+
+// Private view data
 type viewData struct {
 	GlobalViewData *models.GlobalViewData
-	PageTitle      string
 	PageView       string
 }
 
-// IndexHandler handles the main page
+// IndexHandler handles the / page
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	// Get static files from context
 	staticFiles := r.Context().Value(contexts.StaticFilesKeyContextKey)
 
-	// Get template
-	tmpl := template.Must(template.ParseFiles(
-		"web/templates/layout.html",
+	// View data
+	data := &viewData{
+		PageView: "posts",
+		GlobalViewData: &models.GlobalViewData{
+			StaticFiles: staticFiles,
+		},
+	}
 
-		"web/templates/partials/icons.html",
-		"web/templates/partials/navbar.html",
+	// Execute view data + template
+	tmpl.Execute(w, data)
+}
 
-		"web/templates/pages/posts.html",
-		"web/templates/pages/about.html",
-	))
+// AboutHandler handles the /about page
+func AboutHandler(w http.ResponseWriter, r *http.Request) {
+	// Get static files from context
+	staticFiles := r.Context().Value(contexts.StaticFilesKeyContextKey)
 
 	// View data
 	data := &viewData{
-		PageTitle: "src.onl deployed!",
-		PageView:  "about",
+		PageView: "about",
 		GlobalViewData: &models.GlobalViewData{
 			StaticFiles: staticFiles,
 		},

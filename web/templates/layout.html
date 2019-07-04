@@ -7,14 +7,15 @@
     <link rel="stylesheet" href="/static/{{index .GlobalViewData.StaticFiles "CSS"}}" type="text/css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
   </head>
-  <body>
+  <body class="page page--{{ .PageView }}">
     {{ template "partial-icons" }}
     {{ template "partial-navbar" }}
-    {{if eq .PageView "about"}}
+
+    {{ if eq .PageView "about" }}
       {{ template "page-about" }}
-    {{else if eq .PageView "posts"}}
+    {{ else if eq .PageView "posts" }}
       {{ template "page-posts" }}
-    {{end}}
+    {{ end }}
     <script src="/static/{{index .GlobalViewData.StaticFiles "JS"}}"></script>
   </body>
 </html>

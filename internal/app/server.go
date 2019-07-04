@@ -25,6 +25,7 @@ func Start() {
 
 	// Index route
 	r.HandleFunc("/", controllers.IndexHandler)
+	r.HandleFunc("/about", controllers.AboutHandler)
 
 	// Favicon
 	r.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
