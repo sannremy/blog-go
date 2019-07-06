@@ -1,0 +1,37 @@
+// Navbar
+.navbar {
+  position: fixed;
+  z-index: 10;
+  display: block;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #f5e3e6;
+
+  $paddingLeftRight: 20px;
+
+  .navbar__logo {
+    position: absolute;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    width: 30px;
+  }
+
+  ul {
+    position: relative;
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 5px $paddingLeftRight;
+    text-align: right;
+    box-sizing: border-box;
+    display: block;
+  }
+
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    text-align: center;
+  }
+}
