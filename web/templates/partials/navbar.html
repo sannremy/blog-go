@@ -1,6 +1,13 @@
 {{ define "partial-navbar" }}
 <nav class="navbar">
   <ul>
+    <li class="navbar__logo">
+      <a class="navbar__link navbar__link--src" href="/">
+        <svg role="img" viewBox="0 0 266 266" xmlns="http://www.w3.org/2000/svg">
+          <use xlink:href="#logo" x="0" y="0" />
+        </svg>
+      </a>
+    </li>
     <li>
       <a class="navbar__link navbar__link--posts" href="/" data-text="Posts">Posts</a>
     </li>
