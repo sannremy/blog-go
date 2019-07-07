@@ -32,11 +32,10 @@ func Start() {
 	r.HandleFunc("/about", controllers.AboutHandler)
 
 	// Post routes
-	// slugsCount = len(libs.PostSlugs)
-	// for i := 0; i < slugsCount; i++ {
-	// 	r.HandleFunc("/about", controllers.AboutHandler)
-	// 	libs.PostSlugs
-	// }
+	slugsCount := len(libs.PostSlugs)
+	for i := 0; i < slugsCount; i++ {
+		r.HandleFunc("/"+libs.PostSlugs[i], controllers.PostHandler)
+	}
 
 	// Favicon
 	r.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {

@@ -55,7 +55,7 @@ func InitPosts() {
 			PostSlugs = append(PostSlugs, postSlug)
 
 			// Date
-			PostDates[postSlug] = path[0:10]
+			PostDates[postSlug] = path[len(postsDir) : len(postsDir)+10]
 
 			// Post title
 			PostTitles[postSlug] = title

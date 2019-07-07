@@ -14,7 +14,7 @@
     {{ if eq .PageView "about" }}
       {{ template "page-about" }}
     {{ else if eq .PageView "posts" }}
-      {{ template "page-posts" }}
+      {{ template "page-posts" .Posts }}
     {{ end }}
     <script src="/static/{{index .GlobalViewData.StaticFiles "JS"}}"></script>
   </body>

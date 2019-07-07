@@ -1,10 +1,13 @@
 package controllers
 
 import (
+	"log"
 	"net/http"
+	"strings"
 	"text/template"
 
 	"github.com/srchea/homepage/internal/pkg/contexts"
+	"github.com/srchea/homepage/internal/pkg/libs"
 	"github.com/srchea/homepage/internal/pkg/models"
 )
 
@@ -20,9 +23,31 @@ var tmpl = template.Must(template.ParseFiles(
 ))
 
 // Private view data
-type viewData struct {
+type indexViewData struct {
 	GlobalViewData *models.GlobalViewData
 	PageView       string
+	Posts          *postsViewData
+}
+
+// Private view data
+type aboutViewData struct {
+	GlobalViewData *models.GlobalViewData
+	PageView       string
+}
+
+// Private view data
+type postViewData struct {
+	GlobalViewData *models.GlobalViewData
+	PageView       string
+	PostTitle      string
+	PostDate       string
+	PostHTML       string
+}
+
+type postsViewData struct {
+	PostTitles map[string]string
+	PostDates  map[string]string
+	PostSlugs  []string
 }
 
 // IndexHandler handles the / page
@@ -31,7 +56,12 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	staticFiles := r.Context().Value(contexts.StaticFilesKeyContextKey)
 
 	// View data
-	data := &viewData{
+	data := &indexViewData{
+		Posts: &postsViewData{
+			PostTitles: libs.PostTitles,
+			PostDates:  libs.PostDates,
+			PostSlugs:  libs.PostSlugs,
+		},
 		PageView: "posts",
 		GlobalViewData: &models.GlobalViewData{
 			StaticFiles: staticFiles,
@@ -39,7 +69,10 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Execute view data + template
-	tmpl.Execute(w, data)
+	err := tmpl.Execute(w, data)
+	if err != nil {
+		log.Fatalf("Template execution failed: %s", err)
+	}
 }
 
 // AboutHandler handles the /about page
@@ -48,7 +81,7 @@ func AboutHandler(w http.ResponseWriter, r *http.Request) {
 	staticFiles := r.Context().Value(contexts.StaticFilesKeyContextKey)
 
 	// View data
-	data := &viewData{
+	data := &aboutViewData{
 		PageView: "about",
 		GlobalViewData: &models.GlobalViewData{
 			StaticFiles: staticFiles,
@@ -56,7 +89,10 @@ func AboutHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Execute view data + template
-	tmpl.Execute(w, data)
+	err := tmpl.Execute(w, data)
+	if err != nil {
+		log.Fatalf("Template execution failed: %s", err)
+	}
 }
 
 // PostHandler handles post pages
@@ -64,19 +100,25 @@ func PostHandler(w http.ResponseWriter, r *http.Request) {
 	// Get static files from context
 	staticFiles := r.Context().Value(contexts.StaticFilesKeyContextKey)
 
-	// PostTitles
-	// PostDates
-	// PostHTMLs
-	// PostSlugs
+	slug := strings.TrimPrefix(r.URL.Path, "/")
+	title := libs.PostTitles[slug]
+	date := libs.PostDates[slug]
+	html := libs.PostHTMLs[slug]
 
 	// View data
-	data := &viewData{
-		PageView: "post",
+	data := &postViewData{
+		PageView:  "post",
+		PostTitle: title,
+		PostDate:  date,
+		PostHTML:  html,
 		GlobalViewData: &models.GlobalViewData{
 			StaticFiles: staticFiles,
 		},
 	}
 
 	// Execute view data + template
-	tmpl.Execute(w, data)
+	err := tmpl.Execute(w, data)
+	if err != nil {
+		log.Fatalf("Template execution failed: %s", err)
+	}
 }
