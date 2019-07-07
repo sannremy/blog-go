@@ -58,3 +58,25 @@ func AboutHandler(w http.ResponseWriter, r *http.Request) {
 	// Execute view data + template
 	tmpl.Execute(w, data)
 }
+
+// PostHandler handles post pages
+func PostHandler(w http.ResponseWriter, r *http.Request) {
+	// Get static files from context
+	staticFiles := r.Context().Value(contexts.StaticFilesKeyContextKey)
+
+	// PostTitles
+	// PostDates
+	// PostHTMLs
+	// PostSlugs
+
+	// View data
+	data := &viewData{
+		PageView: "post",
+		GlobalViewData: &models.GlobalViewData{
+			StaticFiles: staticFiles,
+		},
+	}
+
+	// Execute view data + template
+	tmpl.Execute(w, data)
+}

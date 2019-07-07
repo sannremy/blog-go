@@ -6,11 +6,15 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/srchea/homepage/internal/pkg/controllers"
+	"github.com/srchea/homepage/internal/pkg/libs"
 	"github.com/srchea/homepage/internal/pkg/middleware"
 )
 
 // Start starts a HTTP server
 func Start() {
+	// Routes for posts
+	libs.InitPosts()
+
 	r := mux.NewRouter()
 
 	// Serve assets
@@ -23,9 +27,16 @@ func Start() {
 	// Get static js and css
 	r.Use(middleware.StaticFilesMiddleware)
 
-	// Index route
+	// Routes
 	r.HandleFunc("/", controllers.IndexHandler)
 	r.HandleFunc("/about", controllers.AboutHandler)
+
+	// Post routes
+	// slugsCount = len(libs.PostSlugs)
+	// for i := 0; i < slugsCount; i++ {
+	// 	r.HandleFunc("/about", controllers.AboutHandler)
+	// 	libs.PostSlugs
+	// }
 
 	// Favicon
 	r.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
