@@ -10,7 +10,7 @@
         <li class="posts__item">
           <a class="posts__link link" data-text="{{ index $postTitles $slug }}" href="/{{ $slug }}">{{ index $postTitles $slug }}</a>
           <span class="posts__date">
-            <time datetime="{{ index $postDates $slug }}">{{ index $postDates $slug }}</time>
+            <time datetime="{{ (index $postDates $slug).Format "2006-01-02" }}">{{ (index $postDates $slug).Format "Jan 2006" }}</time>
           </span>
         </li>
       {{ end }}

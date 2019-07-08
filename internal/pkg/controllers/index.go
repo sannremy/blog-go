@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"strings"
 	"text/template"
+	"time"
 
 	"github.com/srchea/homepage/internal/pkg/contexts"
 	"github.com/srchea/homepage/internal/pkg/libs"
@@ -49,14 +50,14 @@ type postViewData struct {
 // View for page-posts template
 type postsTemplateViewData struct {
 	PostTitles map[string]string
-	PostDates  map[string]string
+	PostDates  map[string]time.Time
 	PostSlugs  []string
 }
 
 // View for page-post template
 type postTemplateViewData struct {
 	PostTitle string
-	PostDate  string
+	PostDate  time.Time
 	PostSlug  string
 	PostHTML  string
 }

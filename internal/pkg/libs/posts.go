@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/gomarkdown/markdown"
 	"github.com/gomarkdown/markdown/html"
@@ -16,7 +17,7 @@ import (
 var PostTitles = make(map[string]string)
 
 // PostDates contains post dates
-var PostDates = make(map[string]string)
+var PostDates = make(map[string]time.Time)
 
 // PostHTMLs contains post HTML contents
 var PostHTMLs = make(map[string]string)
@@ -54,8 +55,13 @@ func InitPosts() {
 			postSlug := slug.Make(title)
 			PostSlugs = append(PostSlugs, postSlug)
 
-			// Date
-			PostDates[postSlug] = path[len(postsDir) : len(postsDir)+10]
+			// Date (YYYY-MM-DD)
+			postTime, errTime := time.Parse(time.RFC3339, path[len(postsDir):len(postsDir)+10]+"T00:00:01Z")
+			PostDates[postSlug] = postTime
+
+			if errTime != nil {
+				log.Fatal(errTime)
+			}
 
 			// Post title
 			PostTitles[postSlug] = title

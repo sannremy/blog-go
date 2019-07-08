@@ -4,7 +4,7 @@
 <div class="main">
   <article class="post">
     {{ $postHTML }}
-    <time datetime="{{ $postDate }}">Published on {{ $postDate }}</time>
+    <time datetime="{{ $postDate.Format "2006-01-02" }}">Published on {{ $postDate.Format "Jan 02, 2006" }}</time>
   </article>
 </div>
 {{ end }}
