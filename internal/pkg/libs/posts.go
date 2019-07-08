@@ -70,4 +70,9 @@ func InitPosts() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	// Reverse slugs
+	for i, j := 0, len(PostSlugs)-1; i < j; i, j = i+1, j-1 {
+		PostSlugs[i], PostSlugs[j] = PostSlugs[j], PostSlugs[i]
+	}
 }

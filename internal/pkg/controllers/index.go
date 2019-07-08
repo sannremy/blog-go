@@ -19,6 +19,7 @@ var tmpl = template.Must(template.ParseFiles(
 	"web/templates/partials/navbar.html",
 
 	"web/templates/pages/posts.html",
+	"web/templates/pages/post.html",
 	"web/templates/pages/about.html",
 ))
 
@@ -26,28 +27,38 @@ var tmpl = template.Must(template.ParseFiles(
 type indexViewData struct {
 	GlobalViewData *models.GlobalViewData
 	PageView       string
-	Posts          *postsViewData
+	PageTitle      string
+	Posts          *postsTemplateViewData
 }
 
 // Private view data
 type aboutViewData struct {
 	GlobalViewData *models.GlobalViewData
 	PageView       string
+	PageTitle      string
 }
 
 // Private view data
 type postViewData struct {
 	GlobalViewData *models.GlobalViewData
 	PageView       string
-	PostTitle      string
-	PostDate       string
-	PostHTML       string
+	PageTitle      string
+	Post           *postTemplateViewData
 }
 
-type postsViewData struct {
+// View for page-posts template
+type postsTemplateViewData struct {
 	PostTitles map[string]string
 	PostDates  map[string]string
 	PostSlugs  []string
+}
+
+// View for page-post template
+type postTemplateViewData struct {
+	PostTitle string
+	PostDate  string
+	PostSlug  string
+	PostHTML  string
 }
 
 // IndexHandler handles the / page
@@ -57,12 +68,13 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 
 	// View data
 	data := &indexViewData{
-		Posts: &postsViewData{
+		Posts: &postsTemplateViewData{
 			PostTitles: libs.PostTitles,
 			PostDates:  libs.PostDates,
 			PostSlugs:  libs.PostSlugs,
 		},
-		PageView: "posts",
+		PageView:  "posts",
+		PageTitle: "Blog posts",
 		GlobalViewData: &models.GlobalViewData{
 			StaticFiles: staticFiles,
 		},
@@ -82,7 +94,8 @@ func AboutHandler(w http.ResponseWriter, r *http.Request) {
 
 	// View data
 	data := &aboutViewData{
-		PageView: "about",
+		PageView:  "about",
+		PageTitle: "About",
 		GlobalViewData: &models.GlobalViewData{
 			StaticFiles: staticFiles,
 		},
@@ -108,9 +121,13 @@ func PostHandler(w http.ResponseWriter, r *http.Request) {
 	// View data
 	data := &postViewData{
 		PageView:  "post",
-		PostTitle: title,
-		PostDate:  date,
-		PostHTML:  html,
+		PageTitle: title,
+		Post: &postTemplateViewData{
+			PostTitle: title,
+			PostDate:  date,
+			PostSlug:  slug,
+			PostHTML:  html,
+		},
 		GlobalViewData: &models.GlobalViewData{
 			StaticFiles: staticFiles,
 		},

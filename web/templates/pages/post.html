@@ -1,0 +1,10 @@
+{{ define "page-post" }}
+{{ $postDate := .PostDate }}
+{{ $postHTML := .PostHTML }}
+<div class="main">
+  <article class="post">
+    {{ $postHTML }}
+    <time datetime="{{ $postDate }}">Published on {{ $postDate }}</time>
+  </article>
+</div>
+{{ end }}

@@ -35,8 +35,14 @@ body {
   box-sizing: border-box;
   margin: 0 auto;
 
-  section {
+  section,
+  article {
     width: 100%;
+  }
+
+  time {
+    color: #888;
+    font-size: .8em;
   }
 
   .page--about & {
@@ -56,7 +62,7 @@ body {
   text-align: left;
 
   &__item {
-    height: 44px;
+    min-height: 44px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -69,8 +75,61 @@ body {
   }
 
   &__date {
-    color: #888;
-    font-size: .8em;
+    padding-left: 20px;
+  }
+}
+
+// Single post
+.post {
+  > h1 {
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    font-size: 2.00em;
+    font-weight: bold;
+  }
+
+  h2 {
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    font-size: 1.50em;
+    font-weight: bold;
+  }
+
+  h3 {
+    margin-block-start: 1.00em;
+    margin-block-end: 1.00em;
+    font-size: 1.17em;
+    font-weight: bold;
+  }
+
+  h4 {
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    font-size: 1.00em;
+    font-weight: bold;
+  }
+
+  h5 {
+    margin-block-start: 1.67em;
+    margin-block-end: 1.67em;
+    font-size: 0.83em;
+    font-weight: bold;
+  }
+
+  h6 {
+    margin-block-start: 2.33em;
+    margin-block-end: 2.33em;
+    font-size: 0.67em;
+    font-weight: bold;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+
+    &:hover {
+      color: #888;
+    }
   }
 }
 

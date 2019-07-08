@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Sann-Remy Chea's homepage</title>
+    <title>{{ .PageTitle }} - Sann-Remy Chea's homepage</title>
     <link rel="stylesheet" href="/static/{{index .GlobalViewData.StaticFiles "CSS"}}" type="text/css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
   </head>
@@ -11,7 +11,9 @@
     {{ template "partial-icons" }}
     {{ template "partial-navbar" }}
 
-    {{ if eq .PageView "about" }}
+    {{ if eq .PageView "post" }}
+      {{ template "page-post" .Post }}
+    {{ else if eq .PageView "about" }}
       {{ template "page-about" }}
     {{ else if eq .PageView "posts" }}
       {{ template "page-posts" .Posts }}
