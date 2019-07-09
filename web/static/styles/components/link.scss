@@ -29,6 +29,7 @@ a.link {
   }
 
   &:hover,
+  &:active,
   // Navbar highlight
   .page--posts &.link--navbar-posts,
   .page--about &.link--navbar-about {
@@ -36,6 +37,7 @@ a.link {
       opacity: 1;
     }
   }
+  
   &::before {
     content: '';
     position: absolute;
