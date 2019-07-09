@@ -19,6 +19,17 @@ module.exports = {
   ],
   module: {
     rules: [
+      // Babel config
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
       // SCSS transpiler
       {
         test: /\.(sa|sc|c)ss$/,

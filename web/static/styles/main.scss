@@ -89,6 +89,10 @@ body {
     margin-block-end: 0.67em;
     font-size: 2.00em;
     font-weight: bold;
+
+    &:first-of-type {
+      margin-block-start: 0;
+    }
   }
 
   h2 {
@@ -133,6 +137,10 @@ body {
     &:hover {
       color: #888;
     }
+  }
+
+  pre {
+    display: block;
   }
 }
 
