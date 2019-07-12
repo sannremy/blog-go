@@ -8,11 +8,15 @@ You'll find one of several basic implementations of a communication between clie
 
 WebSocket communications are managed by a server. Each client have to introduce itself by sending a handshake request via the WebSocket protocol (ws). The server accepts or not to open a socket connection by sending a handshake response. I think that schemas below are telling more than a long text, so let's have a look on these pictures:
 
-image
+<p style="text-align: center;">
+  <img src="/static/assets/posts/websocket-handshake.png" />
+</p>
 
 Only after the handshake acceptance, both sides can communicate. Many clients can be connected to the server. For some performance reasons, the limit of clients can be set before creating a new socket.
 
-image
+<p style="text-align: center;">
+  <img src="/static/assets/posts/websocket-clients-server.png" />
+</p>
 
 ## The server side
 
