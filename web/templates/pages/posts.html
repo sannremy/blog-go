@@ -9,7 +9,7 @@
         {{ $slug := . }}
         <li class="posts__item">
           <a class="posts__link link" data-text="{{ index $postTitles $slug }}" href="/{{ $slug }}">{{ index $postTitles $slug }}</a>
-          <span class="posts__date">
+          <span class="posts__date" title="{{ (index $postDates $slug).Format "Jan 02, 2006" }}">
             <time datetime="{{ (index $postDates $slug).Format "2006-01-02" }}">{{ (index $postDates $slug).Format "Jan 2006" }}</time>
           </span>
         </li>
