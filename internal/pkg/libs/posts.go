@@ -27,7 +27,7 @@ var PostSlugs []string
 
 // InitPosts Initialize all posts
 func InitPosts() {
-	htmlFlags := html.CommonFlags | html.HrefTargetBlank
+	htmlFlags := html.CommonFlags
 	opts := html.RendererOptions{Flags: htmlFlags}
 	renderer := html.NewRenderer(opts)
 	postsDir := "web/posts/"
