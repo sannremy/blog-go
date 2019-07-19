@@ -31,13 +31,14 @@ a.link {
   &:hover,
   &:active,
   // Navbar highlight
+  .page--post &.link--navbar-posts,
   .page--posts &.link--navbar-posts,
   .page--about &.link--navbar-about {
     &::before {
       opacity: 1;
     }
   }
-  
+
   &::before {
     content: '';
     position: absolute;
