@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"strings"
@@ -22,6 +23,8 @@ var tmpl = template.Must(template.ParseFiles(
 	"web/templates/pages/posts.html",
 	"web/templates/pages/post.html",
 	"web/templates/pages/about.html",
+
+	"web/templates/pages/error.html",
 ))
 
 // Private view data
@@ -60,6 +63,13 @@ type postTemplateViewData struct {
 	PostDate  time.Time
 	PostSlug  string
 	PostHTML  string
+}
+
+// Private view data
+type errorViewData struct {
+	GlobalViewData *models.GlobalViewData
+	PageView       string
+	PageTitle      string
 }
 
 // IndexHandler handles the / page
@@ -133,6 +143,35 @@ func PostHandler(w http.ResponseWriter, r *http.Request) {
 			StaticFiles: staticFiles,
 		},
 	}
+
+	// Execute view data + template
+	err := tmpl.Execute(w, data)
+	if err != nil {
+		log.Fatalf("Template execution failed: %s", err)
+	}
+}
+
+// RedirectNotFoundHandler redirects to 404
+func RedirectNotFoundHandler(w http.ResponseWriter, r *http.Request) {
+	http.Redirect(w, r, fmt.Sprintf("/404"), http.StatusPermanentRedirect)
+}
+
+// ErrorNotFoundHandler handles 404 pages
+func ErrorNotFoundHandler(w http.ResponseWriter, r *http.Request) {
+	// Get static files from context
+	staticFiles := r.Context().Value(contexts.StaticFilesKeyContextKey)
+
+	// View data
+	data := &errorViewData{
+		PageView:  "error",
+		PageTitle: "Page not found",
+		GlobalViewData: &models.GlobalViewData{
+			StaticFiles: staticFiles,
+		},
+	}
+
+	// 404 status
+	w.WriteHeader(http.StatusNotFound)
 
 	// Execute view data + template
 	err := tmpl.Execute(w, data)

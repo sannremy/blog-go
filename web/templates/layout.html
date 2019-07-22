@@ -17,6 +17,8 @@
       {{ template "page-about" }}
     {{ else if eq .PageView "posts" }}
       {{ template "page-posts" .Posts }}
+    {{ else }}
+      {{ template "page-error" }}
     {{ end }}
     <script src="/static/{{index .GlobalViewData.StaticFiles "JS"}}"></script>
   </body>

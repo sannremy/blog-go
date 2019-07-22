@@ -47,6 +47,10 @@ func Start() {
 		io.WriteString(w, "User-agent: *")
 	})
 
+	// Errors
+	r.HandleFunc("/404", controllers.ErrorNotFoundHandler)
+	r.NotFoundHandler = http.HandlerFunc(controllers.RedirectNotFoundHandler)
+
 	// Serve
 	http.Handle("/", r)
 }
