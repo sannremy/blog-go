@@ -1,12 +1,10 @@
 # A journey from JavaScript to Go
 
-A book that I read to know more about this programming languague.
+A couple of months ago, I read a book to know more about this programming language: [Introducing Go](http://shop.oreilly.com/product/0636920046516.do).
 
-When?
-I have learned Go for a couple of months now.
+## Why choosing Go?
 
-Why?
-Many of programming languages have been created during the 70s, 80s and 90s. Each language is created to solve problems. Those were 90s problems. I was convinced by these arguments so I let myself to start a new programming language.
+Many programming languages have been created during the 70s, 80s and 90s. Each language is created to solve problems. Those were 90s problems. I was convinced by these arguments so I let myself to start a new programming language.
 An efficient and
 
 JavaScript during 4 years, I wanted to diversifier my skillset.
