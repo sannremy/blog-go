@@ -13,8 +13,8 @@ import (
 var PostViewCounts = make(map[string]int64)
 
 type postType struct {
-	slug  string
-	views int64
+	slug  string `firestore:"slug"`
+	views int64  `firestore:"views"`
 }
 
 func getClient() (*firestore.Client, context.Context, error) {
@@ -91,7 +91,7 @@ func UpdateAllPosts() {
 			views: views,
 		}
 
-		ref := client.Collection("post").Doc(slug)
+		ref := client.Collection("posts").Doc(slug)
 		batch.Set(ref, post)
 		hasUpdates = true
 	}
