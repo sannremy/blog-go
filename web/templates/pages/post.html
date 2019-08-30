@@ -1,10 +1,13 @@
 {{ define "page-post" }}
 {{ $postDate := .PostDate }}
 {{ $postHTML := .PostHTML }}
+{{ $postViewCount := .PostViewCount }}
 <div class="main">
   <article class="post">
     {{ $postHTML }}
-    <time datetime="{{ $postDate.Format "2006-01-02" }}">Published on {{ $postDate.Format "Jan 02, 2006" }}</time>
+    <span class="post__footer">
+      {{ $postViewCount }} views - <time datetime="{{ $postDate.Format "2006-01-02" }}">Published on {{ $postDate.Format "Jan 02, 2006" }}</time>
+    </span>
   </article>
 </div>
 {{ end }}

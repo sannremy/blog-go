@@ -68,9 +68,6 @@ func InitPosts() {
 
 			// Post HTML
 			PostHTMLs[postSlug] = html
-
-			// Post temporary counter
-
 		}
 
 		return nil

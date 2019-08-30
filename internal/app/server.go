@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
+	"github.com/robfig/cron/v3"
 	"github.com/srchea/homepage/internal/pkg/controllers"
 	"github.com/srchea/homepage/internal/pkg/libs"
 	"github.com/srchea/homepage/internal/pkg/middleware"
@@ -12,6 +13,9 @@ import (
 
 // Start starts a HTTP server
 func Start() {
+	// Firestore
+	libs.InitPostViewCounts()
+
 	// Routes for posts
 	libs.InitPosts()
 
@@ -53,4 +57,12 @@ func Start() {
 
 	// Serve
 	http.Handle("/", r)
+
+	// Cronjob
+	c := cron.New()
+	c.AddFunc("@every 10s", func() {
+		libs.UpdateAllPosts()
+	})
+
+	c.Start()
 }

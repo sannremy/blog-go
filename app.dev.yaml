@@ -10,6 +10,7 @@ handlers:
   script: auto
 env_variables:
   ENVIRONMENT: "development"
+  FIRESTORE_EMULATOR_HOST: "127.0.0.1:8537"
 skip_files:
 - .*node_modules
 - .*dist

@@ -40,11 +40,6 @@ body {
     width: 100%;
   }
 
-  time {
-    color: #888;
-    font-size: .8em;
-  }
-
   .page--about & {
     text-align: center;
     max-width: 320px;
@@ -76,6 +71,8 @@ body {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    color: #888;
+    font-size: .8em;
   }
 }
 
@@ -143,6 +140,11 @@ body {
   img {
     max-width: 100%;
     width: auto;
+  }
+
+  &__footer {
+    color: #888;
+    font-size: .8em;
   }
 }
 

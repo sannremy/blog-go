@@ -59,10 +59,11 @@ type postsTemplateViewData struct {
 
 // View for page-post template
 type postTemplateViewData struct {
-	PostTitle string
-	PostDate  time.Time
-	PostSlug  string
-	PostHTML  string
+	PostTitle     string
+	PostDate      time.Time
+	PostSlug      string
+	PostHTML      string
+	PostViewCount int64
 }
 
 // Private view data
@@ -121,6 +122,7 @@ func AboutHandler(w http.ResponseWriter, r *http.Request) {
 
 // PostHandler handles post pages
 func PostHandler(w http.ResponseWriter, r *http.Request) {
+
 	// Get static files from context
 	staticFiles := r.Context().Value(contexts.StaticFilesKeyContextKey)
 
@@ -128,16 +130,18 @@ func PostHandler(w http.ResponseWriter, r *http.Request) {
 	title := libs.PostTitles[slug]
 	date := libs.PostDates[slug]
 	html := libs.PostHTMLs[slug]
+	viewCount := libs.PostViewCounts[slug]
 
 	// View data
 	data := &postViewData{
 		PageView:  "post",
 		PageTitle: title,
 		Post: &postTemplateViewData{
-			PostTitle: title,
-			PostDate:  date,
-			PostSlug:  slug,
-			PostHTML:  html,
+			PostTitle:     title,
+			PostDate:      date,
+			PostSlug:      slug,
+			PostHTML:      html,
+			PostViewCount: viewCount,
 		},
 		GlobalViewData: &models.GlobalViewData{
 			StaticFiles: staticFiles,
@@ -149,6 +153,8 @@ func PostHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatalf("Template execution failed: %s", err)
 	}
+
+	libs.IncrementPostViewCount(slug)
 }
 
 // RedirectNotFoundHandler redirects to 404
