@@ -13,8 +13,8 @@ import (
 var PostViewCounts = make(map[string]int64)
 
 type postType struct {
-	slug  string `firestore:"slug"`
-	views int64  `firestore:"views"`
+	Slug  string `firestore:"slug"`
+	Views int64  `firestore:"views"`
 }
 
 func getClient() (*firestore.Client, context.Context, error) {
@@ -46,8 +46,8 @@ func InitPostViewCounts() {
 			fmt.Println(errCast)
 		}
 
-		if postData.slug != "" && postData.views > 0 {
-			PostViewCounts[postData.slug] = postData.views
+		if postData.Slug != "" && postData.Views > 0 {
+			PostViewCounts[postData.Slug] = postData.Views
 		}
 	}
 }
@@ -87,8 +87,8 @@ func UpdateAllPosts() {
 	// Populate all posts into the batch
 	for slug, views := range PostViewCounts {
 		post := postType{
-			slug:  slug,
-			views: views,
+			Slug:  slug,
+			Views: views,
 		}
 
 		ref := client.Collection("posts").Doc(slug)
