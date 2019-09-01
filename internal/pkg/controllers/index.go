@@ -11,6 +11,7 @@ import (
 	"github.com/srchea/homepage/internal/pkg/contexts"
 	"github.com/srchea/homepage/internal/pkg/libs"
 	"github.com/srchea/homepage/internal/pkg/models"
+	"golang.org/x/text/message"
 )
 
 // Get template
@@ -63,7 +64,7 @@ type postTemplateViewData struct {
 	PostDate      time.Time
 	PostSlug      string
 	PostHTML      string
-	PostViewCount int64
+	PostViewCount string
 }
 
 // Private view data
@@ -122,6 +123,8 @@ func AboutHandler(w http.ResponseWriter, r *http.Request) {
 
 // PostHandler handles post pages
 func PostHandler(w http.ResponseWriter, r *http.Request) {
+	// l10n
+	printer := message.NewPrinter(message.MatchLanguage("en"))
 
 	// Get static files from context
 	staticFiles := r.Context().Value(contexts.StaticFilesKeyContextKey)
@@ -130,7 +133,7 @@ func PostHandler(w http.ResponseWriter, r *http.Request) {
 	title := libs.PostTitles[slug]
 	date := libs.PostDates[slug]
 	html := libs.PostHTMLs[slug]
-	viewCount := libs.PostViewCounts[slug]
+	viewCount := printer.Sprintf("%d", libs.PostViewCounts[slug])
 
 	// View data
 	data := &postViewData{

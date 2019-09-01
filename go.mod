@@ -18,6 +18,7 @@ require (
 	golang.org/x/mobile v0.0.0-20190814143026-e8b3e6111d02 // indirect
 	golang.org/x/net v0.0.0-20190813141303-74dc4d7220e7 // indirect
 	golang.org/x/sys v0.0.0-20190813064441-fde4db37ae7a // indirect
+	golang.org/x/text v0.3.2
 	golang.org/x/tools v0.0.0-20190816200558-6889da9d5479 // indirect
 	google.golang.org/api v0.8.0
 	google.golang.org/appengine v1.6.1
