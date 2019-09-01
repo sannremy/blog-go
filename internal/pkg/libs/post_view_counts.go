@@ -73,7 +73,7 @@ func IncrementPostViewCount(slug string) {
 // UpdateAllPosts Update all posts in DB
 func UpdateAllPosts() {
 	// Create Firestore client
-	client, ctx, err := getClient()
+	client, _, err := getClient()
 	if err != nil {
 		fmt.Println(err)
 	}
