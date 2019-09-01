@@ -3,7 +3,6 @@ package libs
 import (
 	"context"
 	"fmt"
-	"log"
 
 	"cloud.google.com/go/firestore"
 	"google.golang.org/api/iterator"
@@ -98,9 +97,9 @@ func UpdateAllPosts() {
 
 	// Commit batch
 	if hasUpdates {
-		_, errBatch := batch.Commit(ctx)
-		if errBatch != nil {
-			log.Printf("Cannot batch write (UpdateAllPosts): %s", errBatch)
-		}
+		// _, errBatch := batch.Commit(ctx)
+		// if errBatch != nil {
+		// 	log.Printf("Cannot batch write (UpdateAllPosts): %s", errBatch)
+		// }
 	}
 }
