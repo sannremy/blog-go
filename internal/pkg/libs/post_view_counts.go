@@ -100,6 +100,7 @@ func UpdateAllPosts() {
 		if viewsFromDb, postExists := postViewCounts[slug]; postExists {
 			if viewsFromDb > views {
 				views = viewsFromDb
+				PostViewCounts[slug] = viewsFromDb
 			}
 		}
 
