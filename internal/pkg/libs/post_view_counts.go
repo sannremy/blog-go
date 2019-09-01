@@ -3,6 +3,7 @@ package libs
 import (
 	"context"
 	"fmt"
+	"log"
 
 	"cloud.google.com/go/firestore"
 	"google.golang.org/api/iterator"
@@ -73,7 +74,7 @@ func IncrementPostViewCount(slug string) {
 // UpdateAllPosts Update all posts in DB
 func UpdateAllPosts() {
 	// Create Firestore client
-	client, _, err := getClient()
+	client, ctx, err := getClient()
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -97,9 +98,9 @@ func UpdateAllPosts() {
 
 	// Commit batch
 	if hasUpdates {
-		// _, errBatch := batch.Commit(ctx)
-		// if errBatch != nil {
-		// 	log.Printf("Cannot batch write (UpdateAllPosts): %s", errBatch)
-		// }
+		_, errBatch := batch.Commit(ctx)
+		if errBatch != nil {
+			log.Printf("Cannot batch write (UpdateAllPosts): %s", errBatch)
+		}
 	}
 }
