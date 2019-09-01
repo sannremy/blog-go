@@ -60,7 +60,7 @@ func Start() {
 
 	// Cronjob
 	c := cron.New()
-	c.AddFunc("@every 10s", func() {
+	c.AddFunc("@every 10m", func() {
 		libs.UpdateAllPosts()
 	})
 

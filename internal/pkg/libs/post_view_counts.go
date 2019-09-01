@@ -26,6 +26,10 @@ func getClient() (*firestore.Client, context.Context, error) {
 
 // InitPostViewCounts Initialize post view counts
 func InitPostViewCounts() {
+	PostViewCounts = getPostViewCounts()
+}
+
+func getPostViewCounts() map[string]int64 {
 	// Create Firestore client
 	client, ctx, err := getClient()
 	if err != nil {
@@ -34,6 +38,7 @@ func InitPostViewCounts() {
 	defer client.Close()
 
 	// Set all post view counts from DB
+	postViewCounts := make(map[string]int64)
 	var postData postType
 	iter := client.Collection("posts").Documents(ctx)
 	for {
@@ -47,9 +52,11 @@ func InitPostViewCounts() {
 		}
 
 		if postData.Slug != "" && postData.Views > 0 {
-			PostViewCounts[postData.Slug] = postData.Views
+			postViewCounts[postData.Slug] = postData.Views
 		}
 	}
+
+	return postViewCounts
 }
 
 // GetPostViewCount Get view count of a specific post
@@ -80,19 +87,30 @@ func UpdateAllPosts() {
 	}
 	defer client.Close()
 
+	// Get post view counts from DB
+	postViewCounts := getPostViewCounts()
+
 	// Batch instance
 	batch := client.Batch()
 	hasUpdates := false
 
 	// Populate all posts into the batch
 	for slug, views := range PostViewCounts {
+		// Get update from DB
+		if viewsFromDb, postExists := postViewCounts[slug]; postExists {
+			if viewsFromDb > views {
+				views = viewsFromDb
+			}
+		}
+
 		post := postType{
 			Slug:  slug,
 			Views: views,
 		}
 
 		ref := client.Collection("posts").Doc(slug)
-		batch.Set(ref, post)
+		batch = batch.Set(ref, post)
+
 		hasUpdates = true
 	}
 
