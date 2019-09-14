@@ -36,6 +36,6 @@ jobs:
     - name: GCP deploy
       uses: actions/gcloud/cli@master
       with:
-        args: app deploy app.yaml
+        args: app deploy --quiet app.yaml
       env:
         CLOUDSDK_CORE_PROJECT: ${{ secrets.CLOUDSDK_CORE_PROJECT }}
