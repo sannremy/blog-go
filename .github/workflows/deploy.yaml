@@ -19,14 +19,14 @@ jobs:
       uses: actions/setup-node@master
       with:
         node-version: 10.x
-      run: yarn install
-      run: yarn run build
+    - run: yarn install
+    - run: yarn run build
 
     - name: Go build
       uses: actions/setup-go@master
       with:
         go-version: 1.12.x
-      run: go build
+    - run: go build
 
     - name: GCP auth
       uses: actions/gcloud/auth@master
@@ -37,3 +37,4 @@ jobs:
       uses: actions/gcloud/cli@master
       env:
         CLOUDSDK_CORE_PROJECT: ${{ secrets.CLOUDSDK_CORE_PROJECT }}
+    - run: gcloud app deploy app.yaml
