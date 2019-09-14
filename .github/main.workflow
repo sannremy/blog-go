@@ -1,6 +1,6 @@
 workflow "Deploy" {
   on = "push"
-  resolves = ["Filter branch master", "Build", "GCP Authenticate", "GCP Deploy"]
+  resolves = ["Filter branch master", "Yarn Install", "Yarn Build", "Go Build", "GCP Authenticate", "GCP Deploy"]
 }
 
 action "Filter branch master" {
