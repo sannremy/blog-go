@@ -8,6 +8,7 @@ import 'prismjs/components/prism-http';
 import 'prismjs/components/prism-markup-templating';
 import 'prismjs/components/prism-php';
 import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-yaml';
 import 'prismjs/themes/prism.css';
 
 const postElement = document.querySelector('.post');
