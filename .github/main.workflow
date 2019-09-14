@@ -8,16 +8,16 @@ action "Filter branch master" {
   args = "branch master"
 }
 
-action "yarn install" {
+action "Yarn Install" {
   uses = "Borales/actions-yarn@master"
   args = "install"
   needs = ["Filter branch master"]
 }
 
-action "yarn build" {
+action "Yarn Build" {
   uses = "Borales/actions-yarn@master"
   args = "build"
-  needs = ["yarn install"]
+  needs = ["Yarn Install"]
 }
 
 action "Go Build" {
@@ -32,7 +32,7 @@ action "GCP Authenticate" {
 }
 
 action "GCP Deploy" {
-  needs = ["GCP Authenticate", "Build"]
+  needs = ["GCP Authenticate", "Go Build"]
   uses = "actions/gcloud/cli@master"
   args = "app deploy --quiet app.yaml"
   secrets = ["CLOUDSDK_CORE_PROJECT"]
