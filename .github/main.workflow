@@ -8,8 +8,20 @@ action "Filter branch master" {
   args = "branch master"
 }
 
-action "Build" {
-  uses = "cedrickring/golang-action@1.2.0"
+action "yarn install" {
+  uses = "Borales/actions-yarn@master"
+  args = "install"
+  needs = ["Filter branch master"]
+}
+
+action "yarn build" {
+  uses = "Borales/actions-yarn@master"
+  args = "build"
+  needs = ["yarn install"]
+}
+
+action "Go Build" {
+  uses = "cedrickring/golang-action/go1.12@1.3.0"
   needs = ["Filter branch master"]
 }
 
