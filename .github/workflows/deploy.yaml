@@ -37,4 +37,4 @@ jobs:
       uses: actions/gcloud/cli@master
       env:
         CLOUDSDK_CORE_PROJECT: ${{ secrets.CLOUDSDK_CORE_PROJECT }}
-    - run: gcloud app deploy app.yaml
+    - run: app deploy app.yaml
