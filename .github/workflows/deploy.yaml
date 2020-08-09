@@ -1,41 +1,41 @@
-name: Deploy
-
-on:
-  push:
-    branches:
-    - master
-  pull_request:
-    branches:
-    - master
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@master
-
-    - name: Node install/build
-      uses: actions/setup-node@master
-      with:
-        node-version: 10.x
-    - run: yarn install
-    - run: yarn run build
-
-    - name: Go build
-      uses: actions/setup-go@master
-      with:
-        go-version: 1.12.x
-    - run: go build
-
-    - name: GCP auth
-      uses: actions/gcloud/auth@master
-      env:
-        GCLOUD_AUTH: ${{ secrets.GCLOUD_AUTH }}
-
-    - name: GCP deploy
-      uses: actions/gcloud/cli@master
-      with:
-        args: app deploy --quiet app.yaml
-      env:
-        CLOUDSDK_CORE_PROJECT: ${{ secrets.CLOUDSDK_CORE_PROJECT }}
+# name: Deploy
+#
+# on:
+#   push:
+#     branches:
+#     - master
+#   pull_request:
+#     branches:
+#     - master
+#
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@master
+#
+#     - name: Node install/build
+#       uses: actions/setup-node@master
+#       with:
+#         node-version: 10.x
+#     - run: yarn install
+#     - run: yarn run build
+#
+#     - name: Go build
+#       uses: actions/setup-go@master
+#       with:
+#         go-version: 1.12.x
+#     - run: go build
+#
+#     - name: GCP auth
+#       uses: actions/gcloud/auth@master
+#       env:
+#         GCLOUD_AUTH: ${{ secrets.GCLOUD_AUTH }}
+#
+#     - name: GCP deploy
+#       uses: actions/gcloud/cli@master
+#       with:
+#         args: app deploy --quiet app.yaml
+#       env:
+#         CLOUDSDK_CORE_PROJECT: ${{ secrets.CLOUDSDK_CORE_PROJECT }}
