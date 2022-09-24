@@ -20,7 +20,7 @@ type postType struct {
 func getClient() (*firestore.Client, context.Context, error) {
 	// Create Firestore client
 	ctx := context.Background()
-	client, err := firestore.NewClient(ctx, "srchea-com")
+	client, err := firestore.NewClient(ctx, "your-firestore-id")
 	return client, ctx, err
 }
 
