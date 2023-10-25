@@ -9,8 +9,8 @@ require (
 	github.com/gosimple/slug v1.5.0
 	github.com/rainycape/unidecode v0.0.0-20150907023854-cb7f23ec59be // indirect
 	github.com/robfig/cron/v3 v3.0.0
-	golang.org/x/text v0.6.0
-	google.golang.org/api v0.103.0
+	golang.org/x/text v0.9.0
+	google.golang.org/api v0.114.0
 	google.golang.org/appengine v1.6.7
-	google.golang.org/grpc v1.53.0 // indirect
+	google.golang.org/grpc v1.56.3 // indirect
 )
